@@ -36,36 +36,7 @@ sudo airmon-ng start wlan0
 
 Vous retrouverez ensuite une nouvelle interface ```wlan0mon``` qui fonctionne en mode monitor.
 
-Si vous utilisez les interfaces Alfa __AWUS036ACH__ (interfaces noires), il faudra faire les manipulations suivantes pour les configurer en mode monitor. __ATTENTION, utilisez les commandes suivantes uniquement si vous utilisez les interfaces AWUS036ACH__ :
 
-### Installer le driver (disponible sur Kali. Pour d'autres distributions, il faudra probablement le compiler à partir des sources) :
-
-```bash
-sudo apt-get install realtek-rtl88xxau-dkms
-```
-
-Ensuite, pour passer en mode monitor :
-
-### Mettre l'interface “down”
-
-```bash
-sudo ip link set wlan0 down
-```
-
-### Configurer le mode monitor
-
-```bash
-sudo iwconfig wlan0 mode monitor
-```
-
-### Si vous devez compiler le driver :
-
-```bash
-git clone https://github.com/astsam/rtl8812au.git
-cd rtl8812au
-make
-sudo make install
-```
 
 ## Travail à réaliser
 
