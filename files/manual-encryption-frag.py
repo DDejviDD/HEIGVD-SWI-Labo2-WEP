@@ -18,10 +18,7 @@ import rc4
 key = '\xaa\xaa\xaa\xaa\xaa'
 
 # Le message à fragmenter
-message = '123456789012345678901234567890123456789012345678901234567890123456789012'
-
-# La capture fournie
-arp = rdpcap('arp.cap')[0]
+message = 'Yet such is oft the course of deeds that move the wheels of the world: small hands do them because they must, while the eyes of the great are elsewhere.'
 
 # Fonction de chiffrement d'une donnée
 def crypt(data, cap):
@@ -41,7 +38,7 @@ def crypt(data, cap):
 
 # Fonction de fragmentation d'un message
 def frag(message):
-    frag_size = 36
+    frag_size = 24
     frag_nb = int(math.ceil(len(message) / float(frag_size)))
     plain_frags = frag_nb * [""]
     padding = ' '
@@ -49,6 +46,10 @@ def frag(message):
     packets = []
 
     for n in range(frag_nb):
+
+        # La capture fournie utilisée comme template
+        arp = rdpcap('arp.cap')[0]
+
         # Compteur de fragment
         arp.SC = n
 
